@@ -20,6 +20,9 @@ npm-debug.log*
 .env
 .env.local
 
+# Firebase config (contains API keys)
+src/js/core/firebase-config.js
+
 # Python server cache
 __pycache__/
 *.pyc

@@ -1,9 +1,4 @@
-/* ====================================================
-   EduMetrics AI — CollegeDoors Import Logic
-   Supports:
-     - Classic JSON upload (bookmarklet → download → upload)
-     - Mega Sync (live postMessage relay from CD tab)
-   ==================================================== */
+// import.js — handles CollegeDoors import (file upload + Mega Sync)
 
 let parsedTests = [];   // tests from uploaded JSON
 let existingTests = []; // tests already in Firestore
@@ -19,9 +14,7 @@ requireAuth(async (user) => {
     existingTests = await getAllTests();
 });
 
-// ================================================================
-//  MEGA SYNC
-// ================================================================
+// --- Mega Sync ---
 
 function startMegaSync() {
     const btn = document.getElementById('megaSyncBtn');
@@ -180,9 +173,7 @@ function finishMegaSync() {
     }
 }
 
-// ================================================================
-//  MEGA SYNC UI HELPERS
-// ================================================================
+// helpers for the sync panel UI
 
 function showMegaPanel() {
     document.getElementById('megaSyncPanel').style.display = 'block';
@@ -238,9 +229,7 @@ function appendSyncLog(name, status, detail) {
     log.scrollTop = log.scrollHeight;
 }
 
-// ================================================================
-//  CLASSIC FILE UPLOAD
-// ================================================================
+// --- Classic file upload ---
 
 document.getElementById('importFile').addEventListener('change', function () {
     const file = this.files[0];
@@ -259,7 +248,7 @@ document.getElementById('importFile').addEventListener('change', function () {
     reader.readAsText(file);
 });
 
-// ---- Preview Table ----
+
 function renderPreview(tests) {
     const tbody = document.getElementById('previewBody');
     const section = document.getElementById('previewSection');
@@ -302,12 +291,12 @@ function renderPreview(tests) {
     document.getElementById('errorMsg').style.display = 'none';
 }
 
-// ---- Select All toggle ----
+
 function toggleAll(checked) {
     document.querySelectorAll('.import-cb').forEach(cb => cb.checked = checked);
 }
 
-// ---- Import ----
+
 async function runImport() {
     const btn = document.getElementById('importBtn');
     const selected = [...document.querySelectorAll('.import-cb:checked')]
@@ -346,9 +335,7 @@ async function runImport() {
     setTimeout(() => location.href = 'index.html', 1800);
 }
 
-// ================================================================
-//  HELPERS
-// ================================================================
+// utils
 
 function showError(msg) {
     const el = document.getElementById('errorMsg');

@@ -1,12 +1,10 @@
-/* ====================================================
-   EduMetStore AI — Dashboard Logic (Firebase/Firestore)
-   ==================================================== */
+// dashboard.js — main dashboard logic
 
 let chart = null;
 let currentFilter = 'all';
 let allTests = [];
 
-// ---- Test Category Presets ----
+// test category presets
 const TEST_PRESETS = {
   'jee-main': {
     label: 'JEE Main',
@@ -84,7 +82,7 @@ function setFilter(filter, btn) {
   renderChart(getFilteredTests());
 }
 
-// ---- Stats ----
+
 function updateStats(tests) {
   document.getElementById('statTests').textContent = tests.length;
   if (!tests.length) return;
@@ -121,7 +119,7 @@ function toggleChartDataset(datasetName) {
   renderChart(getFilteredTests());
 }
 
-// ---- Chart ----
+
 function renderChart(tests) {
   const canvas = document.getElementById('performanceChart');
   const emptyEl = document.getElementById('chartEmpty');
@@ -172,7 +170,7 @@ function renderChart(tests) {
   });
 }
 
-// ---- AI Annotations ----
+
 function renderAIAnnotations(tests) {
   const sorted = [...tests].sort((a, b) => new Date(a.date) - new Date(b.date));
   const annotations = getGraphAIAnnotations(sorted);
@@ -186,7 +184,7 @@ function renderAIAnnotations(tests) {
   }
 }
 
-// ---- Test List ----
+
 function renderTestList(tests) {
   const list = document.getElementById('testsList');
   const empty = document.getElementById('testsEmpty');
@@ -212,7 +210,7 @@ function renderTestList(tests) {
   }).join('');
 }
 
-// ---- Modal ----
+
 function openModal() { document.getElementById('addTestModal').style.display = 'flex'; document.getElementById('testName').focus(); }
 function closeModal() {
   document.getElementById('addTestModal').style.display = 'none';
@@ -286,7 +284,7 @@ async function handleAddTest(e) {
 
 function openDeepDive(testId) { window.location.href = `deep-dive.html?id=${testId}`; }
 
-// ---- Loader ----
+
 function showLoader(show) {
   let loader = document.getElementById('pageLoader');
   if (!loader) {
@@ -299,7 +297,7 @@ function showLoader(show) {
   loader.style.display = show ? 'flex' : 'none';
 }
 
-// ---- Toast ----
+
 function showToast(msg) {
   let toast = document.getElementById('toast');
   if (!toast) {
@@ -313,7 +311,7 @@ function showToast(msg) {
   setTimeout(() => { toast.style.display = 'none'; }, 3500);
 }
 
-// ---- PDF Export ----
+
 async function exportDashboard() {
   const btn = document.getElementById('exportBtn');
   btn.disabled = true; btn.innerHTML = '<span><img src="assets/icons/icon-export.svg" class="svg-icon" alt="export"></span> Exporting…';

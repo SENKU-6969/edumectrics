@@ -1,8 +1,5 @@
-/* ====================================================
-   EduMetrics AI — Firebase Configuration (TEMPLATE)
-   Copy this file to firebase-config.js and fill in
-   your own Firebase project values.
-   ==================================================== */
+// template for firebase config
+// copy to firebase-config.js and add real values
 
 const FIREBASE_CONFIG = {
     apiKey: "YOUR_API_KEY_HERE",

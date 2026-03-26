@@ -1,7 +1,4 @@
-/*  
-   EduMetrics 
-   Dark theme with intentional blue/cyan accents
-    */
+/* edumetrics theme */
 
 
 :root {
@@ -51,7 +48,7 @@
   --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ---- SVG Icons ---- */
+/* icons */
 .svg-icon {
   width: 1.2em;
   height: 1.2em;
@@ -73,7 +70,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ---- Reset ---- */
+/* reset */
 *,
 *::before,
 *::after {
@@ -97,7 +94,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ---- Sidebar ---- */
+/* sidebar */
 .sidebar {
   width: var(--sidebar-width);
   background: #0F172A;
@@ -257,7 +254,7 @@ body {
   color: var(--neon-amber);
 }
 
-/* ---- Main Content ---- */
+/* layout */
 .main-content {
   margin-left: var(--sidebar-width);
   flex: 1;
@@ -265,7 +262,7 @@ body {
   max-width: 1200px;
 }
 
-/* ---- Page Header ---- */
+
 .page-header {
   display: flex;
   justify-content: space-between;
@@ -304,7 +301,7 @@ body {
   flex-shrink: 0;
 }
 
-/* ---- Buttons ---- */
+/* buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -358,7 +355,7 @@ body {
   background: rgba(239, 68, 68, 0.25);
 }
 
-/* ---- Stats Row ---- */
+/* stats */
 .stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -415,7 +412,7 @@ body {
   letter-spacing: 0.4px;
 }
 
-/* ---- AI Banner ---- */
+/* banners */
 .ai-banner {
   background: linear-gradient(135deg, rgba(159, 122, 234, 0.12), rgba(0, 180, 255, 0.08));
   border: 1px solid rgba(159, 122, 234, 0.3);
@@ -465,7 +462,7 @@ body {
   color: var(--text-secondary);
 }
 
-/* ---- Chart Section ---- */
+/* charts */
 .chart-section {
   margin-bottom: 28px;
 }
@@ -584,10 +581,10 @@ body {
   opacity: 0.4;
 }
 
-/* ---- Tests Section ---- */
+
 .tests-section {}
 
-/* ---- Category Badges ---- */
+/* badges */
 .category-badge {
   display: inline-block;
   font-size: 9px;
@@ -768,7 +765,7 @@ body {
   margin-left: 4px;
 }
 
-/* ---- Modal ---- */
+/* modals */
 .modal-overlay {
   position: fixed;
   inset: 0;

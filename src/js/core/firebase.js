@@ -1,18 +1,10 @@
-/* ====================================================
-   EduMetrics AI — Firebase Initialization
-   ==================================================== */
+// firebase init
 
-const firebaseConfig = {
-  apiKey: "REMOVED_API_KEY",
-  authDomain: "edumetrics-aea83.firebaseapp.com",
-  projectId: "edumetrics-aea83",
-  storageBucket: "edumetrics-aea83.firebasestorage.app",
-  messagingSenderId: "355793163702",
-  appId: "1:355793163702:web:45e2921648e6d61fef9d17",
-  measurementId: "G-M107J6DDC4"
-};
+if (typeof FIREBASE_CONFIG === 'undefined') {
+  console.error('Firebase config not found. Make sure firebase-config.js is loaded before firebase.js');
+}
 
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(FIREBASE_CONFIG);
 
 const auth = firebase.auth();
 const db = firebase.firestore();

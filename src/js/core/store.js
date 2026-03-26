@@ -1,9 +1,6 @@
-/* ====================================================
-   EduMetrics AI — Data Store (Firestore Cloud Sync)
-   Each user's data lives at: users/{uid}/tests & users/{uid}/formulas
-   ==================================================== */
+// data layer — syncs user tests and formulas to firestore
 
-// ---- Collection references (scoped to current user) ----
+// collection refs
 
 function testsCol() {
   const uid = firebase.auth().currentUser?.uid;
@@ -17,7 +14,7 @@ function formulasCol() {
   return db.collection('users').doc(uid).collection('formulas');
 }
 
-// ---- Test CRUD ----
+
 
 async function getAllTests() {
   const snap = await testsCol().get();
@@ -77,7 +74,7 @@ async function findTestByTsid(tsid) {
   return { id: doc.id, ...doc.data() };
 }
 
-// ---- Formula CRUD ----
+
 
 async function getAllFormulas() {
   const snap = await formulasCol().get();
@@ -110,7 +107,7 @@ function newFormula({ topic, content, sourceTestId, sourceTestName }) {
   };
 }
 
-// ---- Helpers ----
+
 
 function formatDate(dateStr) {
   if (!dateStr) return '—';
@@ -123,7 +120,9 @@ async function getTestsSortedByDate() {
   return tests.sort((a, b) => new Date(a.date) - new Date(b.date));
 }
 
-// ---- AI Logic (pure functions — no I/O) ----
+
+// pure ai logic functions
+
 
 async function detectRecurringWeaknesses(currentTestId, text) {
   if (!text || text.trim().length < 3) return [];
@@ -243,7 +242,7 @@ function getGraphAIAnnotations(sorted) {
   return annotations.length ? [annotations[annotations.length - 1]] : [];
 }
 
-// ---- Auth helpers ----
+
 
 function updateUserDisplay(user) {
   const nameEl = document.querySelector('.student-name');
@@ -282,7 +281,9 @@ function requireAuth(callback) {
   });
 }
 
-// ---- Seed demo data (runs only if user has 0 tests) ----
+
+// demo data
+
 async function seedDemoData() {
   const existing = await getAllTests();
   if (existing.length > 0) return;

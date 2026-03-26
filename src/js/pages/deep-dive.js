@@ -1,8 +1,6 @@
-/* ====================================================
-   EduMetrics AI — Deep Dive Logic (Firebase/Firestore)
-   ==================================================== */
+// deep-dive.js — per-test analysis page
 
-// ---- Preset map (mirrors dashboard.js presets) ----
+// preset map (mirrors dashboard.js presets)
 const DD_PRESETS = {
   'jee-main': { badge: 'JEE MAIN', cls: 'jee-main' },
   'jee-adv-2p': { badge: 'ADV 2P', cls: 'jee-adv-2p' },
@@ -53,7 +51,7 @@ function loadTestData() {
   if (t.weaknesses) checkRecurringWeakness(t.weaknesses);
 }
 
-// ---- Category ----
+
 function onCategoryChange() {
   const val = document.getElementById('ddCategory').value;
   updateCategoryBadge(val);
@@ -67,7 +65,7 @@ function updateCategoryBadge(val) {
 }
 
 
-// ---- Slider ----
+
 function updateSlider(subject) {
   const val = parseInt(document.getElementById(subject + 'Time').value);
   document.getElementById(subject + 'TimeVal').textContent = val + ' min';
@@ -79,7 +77,7 @@ function updateSlider(subject) {
   document.querySelector('#totalTimeVal + div').textContent = `${Math.floor(total / 60)}h ${total % 60}m`;
 }
 
-// ---- Subject & Time Events ----
+
 function onSubjectChange() {
   const p = parseFloat(document.getElementById('physicsMarks').value) || 0;
   const c = parseFloat(document.getElementById('chemistryMarks').value) || 0;
@@ -105,7 +103,7 @@ function onSubjectChange() {
 
 function onTimeChange() { triggerGhostMistakeCheck(); updateEfficiencyChart(); }
 
-// ---- Efficiency Chart ----
+
 function updateEfficiencyChart() {
   const timeSpent = {
     P: parseInt(document.getElementById('physicsTime').value) || 0,
@@ -141,7 +139,7 @@ function updateEfficiencyChart() {
   }).join('');
 }
 
-// ---- Ghost Mistake ----
+
 function triggerGhostMistakeCheck() {
   const timeSpent = { P: parseInt(document.getElementById('physicsTime').value) || 0, C: parseInt(document.getElementById('chemistryTime').value) || 0, M: parseInt(document.getElementById('mathTime').value) || 0 };
   const subjectMarks = { P: parseFloat(document.getElementById('physicsMarks').value) || 0, C: parseFloat(document.getElementById('chemistryMarks').value) || 0, M: parseFloat(document.getElementById('mathMarks').value) || 0 };
@@ -156,7 +154,7 @@ function triggerGhostMistakeCheck() {
   }
 }
 
-// ---- Recurring Weakness ----
+
 let recurringTimeout = null;
 function checkRecurringWeakness(text) {
   clearTimeout(recurringTimeout);
@@ -178,7 +176,7 @@ function checkRecurringWeakness(text) {
   }, 600);
 }
 
-// ---- Save ----
+
 async function saveDeepDive() {
   if (!currentTest) return;
   const btn = document.getElementById('saveBtn');
@@ -218,7 +216,7 @@ async function saveDeepDive() {
   setTimeout(() => { btn.textContent = 'Save Analysis ✓'; btn.style.background = ''; }, 2000);
 }
 
-// ---- Delete ----
+
 async function deleteCurrentTest() {
   if (!currentTest) return;
   const confirmed = confirm(`<img src="src/icons/icon-warning.svg" class="svg-icon" alt="warning"> Delete "${currentTest.name}"?\n\nThis will permanently remove the test and all its analysis data. This cannot be undone.`);

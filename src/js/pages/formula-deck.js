@@ -1,6 +1,4 @@
-/* ====================================================
-   EduMetrics AI — Formula Deck Logic (Firebase/Firestore)
-   ==================================================== */
+// formula-deck.js — formula card browser and review tracker
 
 requireAuth(async (user) => {
   await renderFormulas('');

@@ -1,6 +1,4 @@
-/* ====================================================
-   EduMetrics AI — AI Insights Logic (Firebase/Firestore)
-   ==================================================== */
+// ai-insights.js — insights and predictions page
 
 requireAuth(async (user) => {
   await buildInsights();
