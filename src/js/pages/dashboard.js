@@ -12,7 +12,7 @@ const TEST_PRESETS = {
     maxMarks: 300,
     subjectMax: { P: 100, C: 100, M: 100 },
     locked: true,
-    info: '📋 JEE Main · 300 Marks total · Physics 100 | Chemistry 100 | Maths 100'
+    info: 'JEE Main · 300 Marks total · Physics 100 | Chemistry 100 | Maths 100'
   },
   'jee-adv-2p': {
     label: 'JEE Advanced (2 Papers)',
@@ -20,7 +20,7 @@ const TEST_PRESETS = {
     maxMarks: 360,
     subjectMax: { P: 120, C: 120, M: 120 },
     locked: false,
-    info: '📋 JEE Advanced 2 Papers · Default 360 Marks · Physics 120 | Chemistry 120 | Maths 120 (editable)'
+    info: 'JEE Advanced 2 Papers · Default 360 Marks · Physics 120 | Chemistry 120 | Maths 120 (editable)'
   },
   'jee-adv-1p': {
     label: 'JEE Advanced (1 Paper)',
@@ -28,7 +28,7 @@ const TEST_PRESETS = {
     maxMarks: 180,
     subjectMax: { P: 60, C: 60, M: 60 },
     locked: false,
-    info: '📋 JEE Advanced 1 Paper · Default 180 Marks · Physics 60 | Chemistry 60 | Maths 60 (editable)'
+    info: 'JEE Advanced 1 Paper · Default 180 Marks · Physics 60 | Chemistry 60 | Maths 60 (editable)'
   },
   'cet': {
     label: 'CET (MHT-CET)',
@@ -36,7 +36,7 @@ const TEST_PRESETS = {
     maxMarks: 200,
     subjectMax: { P: 50, C: 50, M: 100 },
     locked: true,
-    info: '📋 MHT-CET · 200 Marks total · Physics 50 | Chemistry 50 | Maths 100'
+    info: 'MHT-CET · 200 Marks total · Physics 50 | Chemistry 50 | Maths 100'
   },
   'other': {
     label: 'Other',
@@ -44,7 +44,7 @@ const TEST_PRESETS = {
     maxMarks: null,
     subjectMax: null,
     locked: false,
-    info: '📋 Custom test — set your own max marks'
+    info: 'Custom test — set your own max marks'
   }
 };
 
@@ -322,7 +322,7 @@ async function exportDashboard() {
     const W = pdf.internal.pageSize.getWidth(), H = pdf.internal.pageSize.getHeight();
     pdf.setFillColor(11, 15, 20); pdf.rect(0, 0, W, H, 'F');
     pdf.setFont('helvetica', 'bold'); pdf.setFontSize(18); pdf.setTextColor(59, 130, 246);
-    pdf.text('EduMetrics AI — Performance Report', 14, 14);
+    pdf.text('EduMetrics — Performance Report', 14, 14);
     pdf.setFontSize(10); pdf.setTextColor(136, 146, 164);
     pdf.text(`Generated: ${new Date().toLocaleDateString('en-IN', { dateStyle: 'long' })}`, 14, 21);
     const imgH = (canvas.height / canvas.width) * (W - 28);

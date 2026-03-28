@@ -180,7 +180,7 @@ function checkRecurringWeakness(text) {
 async function saveDeepDive() {
   if (!currentTest) return;
   const btn = document.getElementById('saveBtn');
-  btn.disabled = true; btn.textContent = '⏳ Saving…';
+  btn.disabled = true; btn.textContent = 'Saving…';
 
   const pMarks = parseFloat(document.getElementById('physicsMarks').value);
   const cMarks = parseFloat(document.getElementById('chemistryMarks').value);
@@ -211,9 +211,9 @@ async function saveDeepDive() {
     }
   }
 
-  btn.disabled = false; btn.textContent = '✓ Saved!';
+  btn.disabled = false; btn.textContent = 'Saved!';
   btn.style.background = 'linear-gradient(135deg, var(--neon-green), #00aa55)';
-  setTimeout(() => { btn.textContent = 'Save Analysis ✓'; btn.style.background = ''; }, 2000);
+  setTimeout(() => { btn.textContent = 'Save Analysis'; btn.style.background = ''; }, 2000);
 }
 
 
@@ -223,7 +223,7 @@ async function deleteCurrentTest() {
   if (!confirmed) return;
 
   const btn = document.getElementById('deleteBtn');
-  btn.disabled = true; btn.textContent = '⏳ Deleting…';
+  btn.disabled = true; btn.textContent = 'Deleting…';
 
   try {
     await deleteTest(currentTestId);

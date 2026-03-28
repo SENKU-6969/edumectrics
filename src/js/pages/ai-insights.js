@@ -46,7 +46,7 @@ function renderConsistency(score, tests) {
   const color = score>=70?'var(--neon-green)':score>=40?'var(--neon-amber)':'var(--neon-red)';
   const msg = score>=70?'Excellent! You\'re consistently logging action plans.':score>=40?'Good progress. Try to fill action plans for every test.':'Action plans missing for most tests. This is your biggest leverage point!';
   const r=45, circ=2*Math.PI*r;
-  return `<div class="insight-card"><span class="insight-emoji">📋</span><div class="insight-title">Study Consistency Score</div>
+  return `<div class="insight-card"><div class="insight-title">Study Consistency Score</div>
     <div class="score-ring-wrap"><div class="score-ring">
       <svg viewBox="0 0 120 120" width="120" height="120">
         <circle cx="60" cy="60" r="${r}" fill="none" stroke="var(--bg-surface-3)" stroke-width="10"/>
@@ -71,11 +71,11 @@ function renderTopicClusters(clusters) {
   if (!clusters.length) return `<div class="insight-card"><span class="insight-emoji"><img src="src/icons/icon-avatar.svg" class="svg-icon" alt="avatar"></span><div class="insight-title">Smart Topic Association</div><div class="insight-desc" style="margin-top:8px;">No weakness patterns detected yet. Fill in Deep Dive weakness logs to enable this feature.</div></div>`;
   const tags = clusters.map((c,i) => `<span class="topic-tag ${i===0?'':i===1?'medium':'low'}">${c.name} (${c.subject})</span>`).join('');
   const top = clusters[0];
-  return `<div class="insight-card"><span class="insight-emoji">🧠</span><div class="insight-title">Smart Topic Association</div>
-    <div class="insight-desc">AI detected recurring patterns. <span style="color:var(--neon-red);">${top.name}</span> appears most frequently.</div>
+  return `<div class="insight-card"><div class="insight-title">Smart Topic Association</div>
+    <div class="insight-desc">Recurring pattern detected. <span style="color:var(--neon-red);">${top.name}</span> appears most frequently.</div>
     <div class="topic-tags">${tags}</div>
     <div style="margin-top:16px;padding:14px;background:var(--bg-surface-2);border-radius:var(--radius-sm);border:1px solid var(--border);">
-      <div style="font-size:12px;font-weight:700;color:var(--neon-blue);margin-bottom:6px;"><img src="src/icons/icon-hint.svg" class="svg-icon" alt="hint"> AI Suggestion</div>
+      <div style="font-size:12px;font-weight:700;color:var(--neon-blue);margin-bottom:6px;"><img src="src/icons/icon-hint.svg" class="svg-icon" alt="hint"> Suggestion</div>
       <div style="font-size:13px;color:var(--text-secondary);">Review <strong>${top.name}</strong> chapters and try 5–7 focused practice problems on this cluster before your next test.</div>
     </div></div>`;
 }
@@ -101,7 +101,7 @@ function renderFormulaDeckInsight(formulas) {
   return `<div class="insight-card"><span class="insight-emoji"><img src="src/icons/icon-formula.svg" class="svg-icon" alt="formula"></span><div class="insight-title">Formula Deck Status</div>
     <div class="insight-value" style="font-size:28px;color:${pct>=70?'var(--neon-green)':'var(--neon-amber)'};">${pct}%</div>
     <div class="insight-sublabel">Reviewed (${reviewed.length}/${formulas.length})</div>
-    <div class="insight-desc" style="margin-top:12px;">${pending.length===0?'🎉 All cards reviewed! Great job.':`<span style="color:var(--neon-red);">${pending.length} unreviewed</span> cards need attention before your next test.`}</div>
+    <div class="insight-desc" style="margin-top:12px;">${pending.length===0?'All cards reviewed.':`<span style="color:var(--neon-red);">${pending.length} unreviewed</span> cards need attention before your next test.`}</div>
     <div style="margin-top:12px;"><button class="btn btn-ghost" onclick="location.href='formula-deck.html'" style="width:100%;justify-content:center;">Open Formula Deck →</button></div></div>`;
 }
 
